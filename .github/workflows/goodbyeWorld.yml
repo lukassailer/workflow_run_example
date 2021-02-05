@@ -8,6 +8,7 @@ on:
       - CI
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,4 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: echo Goodbye, world!
-    - run: the workflow "${{ github.event.workflow_run.name }}" triggered me on the commit "${{ github.event.workflow_run.head_commit.id }}"
+    - run: |
+        echo the workflow "${{ github.event.workflow_run.name }}" triggered me on the commit "${{ github.event.workflow_run.head_commit.id }}".
+        echo It was a ${{ github.event.workflow_run.conclusion}}
